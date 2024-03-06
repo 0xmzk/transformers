@@ -807,6 +807,7 @@ class OneFormerImageProcessor(BaseImageProcessor):
         """
         Pad an image with zeros to the given size.
         """
+        constant_values = 0.0 if constant_values is None else constant_values
         input_height, input_width = get_image_size(image, channel_dim=input_data_format)
         output_height, output_width = output_size
 
@@ -856,6 +857,7 @@ class OneFormerImageProcessor(BaseImageProcessor):
             input_data_format (`ChannelDimension` or `str`, *optional*):
                 The channel dimension format of the input image. If not provided, it will be inferred.
         """
+        constant_values = 0.0 if constant_values is None else constant_values
         pad_size = get_max_height_width(images, input_data_format=input_data_format)
 
         padded_images = [
